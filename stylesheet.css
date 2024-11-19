@@ -1,0 +1,27 @@
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.gridItem{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50%;
+    max-height: 50%;
+    width: auto;
+    height: auto;
+}
+
+.gridSquare{
+    width: 35px;
+    height: 35px;
+    border: 1px solid lightgray;
+    background-color: f7f9f9;
+
+}
+
+/*worked on the styling of the container, gridItem, and the grid squares*/
