@@ -1,0 +1,10 @@
+body {
+    font-family: 'Alumni Sans Pinstripe', sans-serif;
+    background-color: #e9ebec;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
