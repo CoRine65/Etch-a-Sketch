@@ -9,14 +9,7 @@ for(let i = 0; i < 256; i++){
 
 }
 
-/*
-const gridSquares = document.querySelectorAll('.gridSquare');
 
-gridSquares.forEach(square => {
-    square.addEventListener('mouseover', () => {
-        square.style.backgroundColor = selectedColor; // Change to desired color
-    });
-}); */
 
 const colorPickerButton = document.querySelector(".colorPicker");
 const colorInput = document.querySelector("#colorInput");
@@ -37,6 +30,42 @@ colorInput.addEventListener("input", (e) => {
 const gridSquares = document.querySelectorAll(".gridSquare");
 gridSquares.forEach((square) => {
     square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = selectedColor;
+        if (isRainbowMode) {
+            square.style.backgroundColor = generateRanColor();
+            
+        } else {
+            square.style.backgroundColor = selectedColor;
+        }
     });
 });
+
+const eraseButton = document.querySelector(".erase"); // Ensure it's targeting the correct button
+eraseButton.addEventListener("click", () => {
+    const gridSquares = document.querySelectorAll(".gridSquare");
+    gridSquares.forEach(square => {
+        square.style.backgroundColor = "rgb(247, 247, 247)"; // Reset to original background color
+    });
+});
+
+const rainbowButton = document.querySelector(".rainbowMode");
+
+let isRainbowMode = false; // Starts as false
+rainbowButton.addEventListener("click", () => {
+    isRainbowMode = !isRainbowMode; // Toggles between true and false
+    console.log("Rainbow mode is now:", isRainbowMode); // Debugging feedback
+    if (isRainbowMode) {
+        rainbowButton.textContent = "Rainbow Mode: On";  // Show "On" when rainbow mode is active
+    } else {
+        rainbowButton.textContent = "Rainbow Mode: Off"; // Show "Off" when rainbow mode is inactive
+    }
+
+});
+
+function generateRanColor() {
+    let red = Math.floor(Math.random() * 256);   // Random number between 0 and 255
+    let green = Math.floor(Math.random() * 256); // Random number between 0 and 255
+    let blue = Math.floor(Math.random() * 256);  // Random number between 0 and 255
+
+    // Return the color in rgb format
+    return `rgb(${red}, ${green}, ${blue})`;
+}
